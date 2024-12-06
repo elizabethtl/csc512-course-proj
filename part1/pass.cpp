@@ -58,36 +58,47 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
         errs() << "\thas name: " << V->hasName() << ", value name: " << V->getName() << "\n";
 
-        if (isa<Instruction>(V)) {
-            errs() << "\tValue is an instruction: " << *V << "\n";   
-            printValueSourceLocation(V);
-        } else if (isa<Constant>(V)) {
-            errs() << "\tValue is a constant: " << *V << "\n";
-        } else if (isa<Argument>(V)) {
-            errs() << "\tValue is a function argument: " << *V << "\n";
-        } else if (isa<GlobalVariable>(V)) {
-            errs() << "\tValue is a global variable: " << *V << "\n";
-        } else {
-            errs() << "\tUnknown Value type: " << *V << "\n";
-            return;
-        }
+        // if (isa<Instruction>(V)) {
+        //     errs() << "\tValue is an instruction: " << *V << "\n";   
+        //     printValueSourceLocation(V);
+        // } else if (isa<Constant>(V)) {
+        //     errs() << "\tValue is a constant: " << *V << "\n";
+        // } else if (isa<Argument>(V)) {
+        //     errs() << "\tValue is a function argument: " << *V << "\n";
+        // } else if (isa<GlobalVariable>(V)) {
+        //     errs() << "\tValue is a global variable: " << *V << "\n";
+        // } else {
+        //     errs() << "\tUnknown Value type: " << *V << "\n";
+        //     return;
+        // }
     }
 
     std::vector<Instruction*> checked_seminal_inputs;
 
     void checkSeminalInput(Value *V) {
 
+        errs() << "\t\tcheckSeminalInput: " << V->getName() << "\n";
+
         if (auto *callInst = dyn_cast<CallInst>(V)) {
             if (Function *calledFunc = callInst->getCalledFunction()) {
-                errs() << "\t  called function: " << calledFunc->getName() << "\n";
+                errs() << "\t\t  called function: " << calledFunc->getName() << "\n";
                 if (calledFunc->getName().contains("scanf")) {
-                    errs() << "\t  -- Variable originates from scanf: " << *callInst << " --\n";
+                    errs() << "\t\t  Variable originates from scanf: " << *callInst << " --\n";
                 }
+
+                if (calledFunc->getName().contains("getc")) {
+                    llvm::errs() << "\t\t  Found a call to getc\n";
+
+                    Value *arg = callInst->getArgOperand(0);    // Get the first argument
+                    errs() << "\t\t  Argument passed to getc: " << *arg << "\n";
+                    
+                }
+
             }
         } else if (auto *allocaInst = dyn_cast<AllocaInst>(V)) {
-            errs() << "\t  Variable allocated: " << *allocaInst << "\n";
+            errs() << "\t\t  Variable allocated: " << *allocaInst << "\n";
         } else {
-            errs() << "\t  Unhandled input source: " << *V << "\n";
+            errs() << "\t\t  Unhandled input source: " << *V << "\n";
         }
     }
 
@@ -95,15 +106,15 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         errs() << "\tprintDefUseChains()\n";
         for (auto *User : Val->users()) {
             llvm::errs() << "\t  Value is used in: " << *User << "\n";
-            checkSeminalInput(User);
+            // checkSeminalInput(User);
             if (auto *instr = llvm::dyn_cast<llvm::Instruction>(User)) {
-                if (llvm::DebugLoc debugLoc = instr->getDebugLoc()) {
-                    unsigned line = debugLoc.getLine();
-                    unsigned col = debugLoc.getCol();
-                    llvm::StringRef file = debugLoc->getScope()->getFilename();
-                    llvm::StringRef dir = debugLoc->getScope()->getDirectory();
-                    llvm::errs() << "\t  Location: " << dir << "/" << file << ":" << line << ":" << col << "\n";
-                }
+                // if (llvm::DebugLoc debugLoc = instr->getDebugLoc()) {
+                //     unsigned line = debugLoc.getLine();
+                //     unsigned col = debugLoc.getCol();
+                //     llvm::StringRef file = debugLoc->getScope()->getFilename();
+                //     llvm::StringRef dir = debugLoc->getScope()->getDirectory();
+                //     llvm::errs() << "\t  Location: " << dir << "/" << file << ":" << line << ":" << col << "\n";
+                // }
                 checkBeforeTrace(instr);
             }   
         }
@@ -128,6 +139,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         for (Use &U : Inst->operands()) {
             Value *Operand = U.get();
             errs() << "\t  Operand: " << *Operand << "\n";
+            checkSeminalInput(Operand);
             traceVariableOrigin(Operand); // Recursively trace the operand
         }
     }
@@ -147,7 +159,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             errs() << "\tVariable originates from an alloca: " << *AI << "\n";
             printValueName(V);
             printDefUseChains(V);
-            // return;
+            return;
         }
 
         // If it's a global variable
@@ -174,7 +186,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
     }
 
     PreservedAnalyses run(Module &M, ModuleAnalysisManager &AM) {
-        
+
         for (auto &F : M) {
             errs() << "I see a function called " << F.getName() << "\n";
 
@@ -196,21 +208,6 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
                         errs() << "branch instruction: " << br->getSuccessor(0) << "\n";
                     }
                 }
-
-                if (auto *callInst = llvm::dyn_cast<llvm::CallInst>(&I)) {
-                    if (llvm::Function *calledFunc = callInst->getCalledFunction()) {
-                        if (calledFunc->getName() == "getc") {
-                            llvm::errs() << "\tFound a call to getc\n";
-                            printInstrDebugLocation(&I);
-
-                            Value *arg = callInst->getArgOperand(0);    // Get the first argument
-                            errs() << "\tArgument passed to getc: " << *arg << "\n";
-                            
-                            traceVariableOrigin(arg);
-                        }
-                    }
-                }
-
               }
             }
         }
