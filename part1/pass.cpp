@@ -58,19 +58,6 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
         errs() << "\thas name: " << V->hasName() << ", value name: " << V->getName() << "\n";
 
-        // if (isa<Instruction>(V)) {
-        //     errs() << "\tValue is an instruction: " << *V << "\n";   
-        //     printValueSourceLocation(V);
-        // } else if (isa<Constant>(V)) {
-        //     errs() << "\tValue is a constant: " << *V << "\n";
-        // } else if (isa<Argument>(V)) {
-        //     errs() << "\tValue is a function argument: " << *V << "\n";
-        // } else if (isa<GlobalVariable>(V)) {
-        //     errs() << "\tValue is a global variable: " << *V << "\n";
-        // } else {
-        //     errs() << "\tUnknown Value type: " << *V << "\n";
-        //     return;
-        // }
     }
 
     std::vector<Instruction*> checked_seminal_inputs;
@@ -106,15 +93,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         errs() << "\tprintDefUseChains()\n";
         for (auto *User : Val->users()) {
             llvm::errs() << "\t  Value is used in: " << *User << "\n";
-            // checkSeminalInput(User);
             if (auto *instr = llvm::dyn_cast<llvm::Instruction>(User)) {
-                // if (llvm::DebugLoc debugLoc = instr->getDebugLoc()) {
-                //     unsigned line = debugLoc.getLine();
-                //     unsigned col = debugLoc.getCol();
-                //     llvm::StringRef file = debugLoc->getScope()->getFilename();
-                //     llvm::StringRef dir = debugLoc->getScope()->getDirectory();
-                //     llvm::errs() << "\t  Location: " << dir << "/" << file << ":" << line << ":" << col << "\n";
-                // }
                 checkBeforeTrace(instr);
             }   
         }
