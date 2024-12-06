@@ -8,7 +8,7 @@ int main(){
     while (1){
         c=getc(fp);
         if (c == EOF) break;
-        str1[len++] = "c";
+        str1[len++] = c;
         if (len>=1000) break; 
     }
     printf("%s\n", str1);
