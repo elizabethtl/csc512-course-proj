@@ -55,9 +55,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
     // Helper function to find the variable name associated with an instruction
     void printValueName(Value *V) {
-
         errs() << "\thas name: " << V->hasName() << ", value name: " << V->getName() << "\n";
-
     }
 
     std::vector<Instruction*> checked_seminal_inputs;
@@ -70,11 +68,11 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             if (Function *calledFunc = callInst->getCalledFunction()) {
                 errs() << "\t\t  called function: " << calledFunc->getName() << "\n";
                 if (calledFunc->getName().contains("scanf")) {
-                    errs() << "\t\t  Variable originates from scanf: " << *callInst << " --\n";
+                    errs() << "\t\t  Value originates from scanf: " << *callInst << " --\n";
                 }
 
                 if (calledFunc->getName().contains("getc")) {
-                    llvm::errs() << "\t\t  Found a call to getc\n";
+                    llvm::errs() << "\t\t  Value from a call to getc\n";
 
                     Value *arg = callInst->getArgOperand(0);    // Get the first argument
                     errs() << "\t\t  Argument passed to getc: " << *arg << "\n";
@@ -82,11 +80,12 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
                 }
 
             }
-        } else if (auto *allocaInst = dyn_cast<AllocaInst>(V)) {
-            errs() << "\t\t  Variable allocated: " << *allocaInst << "\n";
-        } else {
-            errs() << "\t\t  Unhandled input source: " << *V << "\n";
-        }
+        } 
+        // else if (auto *allocaInst = dyn_cast<AllocaInst>(V)) {
+        //     errs() << "\t\t  Variable allocated: " << *allocaInst << "\n";
+        // } else {
+        //     errs() << "\t\t  Unhandled input source: " << *V << "\n";
+        // }
     }
 
     void printDefUseChains(llvm::Value *Val) {
@@ -129,6 +128,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         if (isa<Argument>(V)) {
             errs() << "\tVariable originates as a function argument: " << *V << "\n";
             printValueName(V);
+            printValueSourceLocation(V);
             printDefUseChains(V);
             return;
         }
@@ -137,6 +137,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         if (AllocaInst *AI = dyn_cast<AllocaInst>(V)) {
             errs() << "\tVariable originates from an alloca: " << *AI << "\n";
             printValueName(V);
+            printValueSourceLocation(V);
             printDefUseChains(V);
             return;
         }
@@ -145,6 +146,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         if (GlobalVariable *GV = dyn_cast<GlobalVariable>(V)) {
             errs() << "\tVariable originates from a global variable: " << *GV << "\n";
             printValueName(V);
+            printValueSourceLocation(V);
             printDefUseChains(V);
             return;
         }
@@ -153,6 +155,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         if (StoreInst *SI = dyn_cast<StoreInst>(V)) {
             errs() << "\tVariable defined by store instruction: " << *SI << "\n";
             printValueName(V);
+            printValueSourceLocation(V);
             printDefUseChains(V);
             return;
         }
