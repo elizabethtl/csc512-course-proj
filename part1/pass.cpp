@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <unordered_set>
 
 #include "llvm/Pass.h"
 #include "llvm/Passes/PassBuilder.h"
@@ -68,16 +69,23 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             if (Function *calledFunc = callInst->getCalledFunction()) {
                 errs() << "\t\t  called function: " << calledFunc->getName() << "\n";
                 if (calledFunc->getName().contains("scanf")) {
-                    errs() << "\t\t  Value originates from scanf: " << *callInst << " --\n";
+                    errs() << "\t\t  --- Value originates from scanf: " << *callInst << " --\n";
                 }
 
                 if (calledFunc->getName().contains("getc")) {
-                    llvm::errs() << "\t\t  Value from a call to getc\n";
+                    llvm::errs() << "\t\t  --- Value from a call to getc\n";
 
                     Value *arg = callInst->getArgOperand(0);    // Get the first argument
                     errs() << "\t\t  Argument passed to getc: " << *arg << "\n";
-                    
                 }
+
+                if (calledFunc->getName().contains("fopen")) {
+                    llvm::errs() << "\t\t  --- Value from a call to fopen\n";
+
+                    Value *arg = callInst->getArgOperand(0);    // Get the first argument
+                    errs() << "\t\t  Argument passed to fopen: " << *arg << "\n";
+                }
+                
 
             }
         } 
@@ -91,7 +99,8 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
     void printDefUseChains(llvm::Value *Val) {
         errs() << "\tprintDefUseChains()\n";
         for (auto *User : Val->users()) {
-            llvm::errs() << "\t  Value is used in: " << *User << "\n";
+            errs() << "\t   DefUseChain value is used in: " << *User << "\n";
+
             if (auto *instr = llvm::dyn_cast<llvm::Instruction>(User)) {
                 checkBeforeTrace(instr);
             }   
@@ -104,6 +113,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
     }
 
     std::vector<Instruction*> traced_instructions;
+    std::unordered_set<Value*> seenOperands;
 
     void checkBeforeTrace(Instruction *Inst) {
         if (isInstructionInVector(traced_instructions, Inst) && isInstructionInVector(checked_seminal_inputs, Inst) ) {
@@ -114,9 +124,17 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             checked_seminal_inputs.push_back(Inst);
         }
 
+        checkSeminalInput(Inst);
+
         for (Use &U : Inst->operands()) {
             Value *Operand = U.get();
-            errs() << "\t  Operand: " << *Operand << "\n";
+
+            if (seenOperands.find(Operand) != seenOperands.end()) {
+                continue; // Skip duplicate operand
+            }
+            seenOperands.insert(Operand);
+
+            errs() << "\t   Operand: " << *Operand << "\n";
             checkSeminalInput(Operand);
             traceVariableOrigin(Operand); // Recursively trace the operand
         }
@@ -170,20 +188,20 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
     PreservedAnalyses run(Module &M, ModuleAnalysisManager &AM) {
 
         for (auto &F : M) {
-            errs() << "I see a function called " << F.getName() << "\n";
+            // errs() << "I see a function called " << F.getName() << "\n";
 
             for (auto &BB : F) {
-              errs() << "I see a basic block " << BB.getName() << "\n";
+            //   errs() << "I see a basic block " << BB.getName() << "\n";
               for (auto &I : BB) {
 
-                errs() << "analyzing uses of: " << I << "\n";
+                // errs() << "analyzing uses of: " << I << "\n";
                 
                 if (BranchInst *br = dyn_cast<BranchInst>(&I)) {
 
                     if (br->isConditional()) {
                         Value *condition = br->getCondition();
-                        errs() << "  branch instruction condition: " << condition << "\n";
-
+                        errs() << "branch instruction condition: " << condition << "\n";
+                        // checkBeforeTrace(condition);
                         traceVariableOrigin(condition);                        
                     }
                     else {
