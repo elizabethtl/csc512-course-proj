@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 
@@ -41,15 +40,18 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
     }
 
     void printValueSourceLocation(Value *V) {
+        User* lastUser = nullptr;
         for (auto *user : V->users()) {
-            if (auto *instr = llvm::dyn_cast<llvm::Instruction>(user)) {
-                if (llvm::DebugLoc debugLoc = instr->getDebugLoc()) {
-                    unsigned line = debugLoc.getLine();
-                    unsigned col = debugLoc.getCol();
-                    llvm::StringRef file = debugLoc->getScope()->getFilename();
-                    llvm::StringRef dir = debugLoc->getScope()->getDirectory();
-                    llvm::errs() << "\tLocation: " << dir << "/" << file << ":" << line << ":" << col << "\n";
-                }
+            lastUser = user;
+        }
+
+        if (auto *instr = llvm::dyn_cast<llvm::Instruction>(lastUser)) {
+            if (llvm::DebugLoc debugLoc = instr->getDebugLoc()) {
+                unsigned line = debugLoc.getLine();
+                unsigned col = debugLoc.getCol();
+                llvm::StringRef file = debugLoc->getScope()->getFilename();
+                llvm::StringRef dir = debugLoc->getScope()->getDirectory();
+                llvm::errs() << "\tLocation: " << dir << "/" << file << ":" << line << ":" << col << "\n";
             }
         }
     }
@@ -63,43 +65,41 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
     void checkSeminalInput(Value *V) {
 
-        errs() << "\t\tcheckSeminalInput: " << V->getName() << "\n";
+        // errs() << "\t\tcheckSeminalInput: " << V->getName() << "\n";
 
         if (auto *callInst = dyn_cast<CallInst>(V)) {
             if (Function *calledFunc = callInst->getCalledFunction()) {
-                errs() << "\t\t  called function: " << calledFunc->getName() << "\n";
+                errs() << "\t  called function: " << calledFunc->getName() << "\n";
                 if (calledFunc->getName().contains("scanf")) {
-                    errs() << "\t\t  --- Value originates from scanf: " << *callInst << " --\n";
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value originates from scanf: " << *callInst << " --\n";
                 }
 
                 if (calledFunc->getName().contains("getc")) {
-                    llvm::errs() << "\t\t  --- Value from a call to getc\n";
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value from a call to getc\n";
 
                     Value *arg = callInst->getArgOperand(0);    // Get the first argument
-                    errs() << "\t\t  Argument passed to getc: " << *arg << "\n";
+                    errs() << "\t  Argument passed to getc: " << *arg << "\n";
                 }
 
                 if (calledFunc->getName().contains("fopen")) {
-                    llvm::errs() << "\t\t  --- Value from a call to fopen\n";
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value from a call to fopen\n";
 
                     Value *arg = callInst->getArgOperand(0);    // Get the first argument
-                    errs() << "\t\t  Argument passed to fopen: " << *arg << "\n";
+                    errs() << "\t  Argument passed to fopen: " << *arg << "\n";
                 }
                 
 
             }
         } 
-        // else if (auto *allocaInst = dyn_cast<AllocaInst>(V)) {
-        //     errs() << "\t\t  Variable allocated: " << *allocaInst << "\n";
-        // } else {
-        //     errs() << "\t\t  Unhandled input source: " << *V << "\n";
-        // }
     }
 
     void printDefUseChains(llvm::Value *Val) {
         errs() << "\tprintDefUseChains()\n";
         for (auto *User : Val->users()) {
-            errs() << "\t   DefUseChain value is used in: " << *User << "\n";
+            // errs() << "\t   DefUseChain value is used in: " << *User << "\n";
 
             if (auto *instr = llvm::dyn_cast<llvm::Instruction>(User)) {
                 checkBeforeTrace(instr);
@@ -134,7 +134,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             }
             seenOperands.insert(Operand);
 
-            errs() << "\t   Operand: " << *Operand << "\n";
+            // errs() << "\t   Operand: " << *Operand << "\n";
             checkSeminalInput(Operand);
             traceVariableOrigin(Operand); // Recursively trace the operand
         }
@@ -180,6 +180,9 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
         // If it's defined by an instruction, trace back its operands
         if (Instruction *Inst = dyn_cast<Instruction>(V)) {
+            if (isInstructionInVector(traced_instructions, Inst)) {
+                return;
+            }
             errs() << "\tTracing variable defined by instruction: " << *Inst << "\n";
             checkBeforeTrace(Inst);
         }
@@ -200,13 +203,13 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
                     if (br->isConditional()) {
                         Value *condition = br->getCondition();
-                        errs() << "branch instruction condition: " << condition << "\n";
+                        // errs() << "branch instruction condition: " << condition << "\n";
                         // checkBeforeTrace(condition);
                         traceVariableOrigin(condition);                        
                     }
-                    else {
-                        errs() << "branch instruction: " << br->getSuccessor(0) << "\n";
-                    }
+                    // else {
+                    //     errs() << "branch instruction: " << br->getSuccessor(0) << "\n";
+                    // }
                 }
               }
             }
