@@ -1,312 +1,292 @@
-#include <stdio.h>
-#include <time.h> 
-#include <stdlib.h> 
-#include <strings.h> 
-#include <windows.h> 
-#include <conio.h> 
-#define V 21
-#define H 75
-#define N 100
-
-#define V 21
-#define H 75
-#define N 100
-
-/*
-	@author: Alfredo Flores
-	@email: alfredojose20001@outlook.es
-  @link: https://github.com/ajfvdev/Snake-Game/blob/master/snake%20game.c
+/* source: github
+*  https://github.com/aymanamkassou/Snake-Game-using-C-and-linked-lists/blob/main/snake.c
 */
 
-typedef struct
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#define MAX 10
+
+typedef struct node
 {
+    int x;
+    int y;
+    struct node *next;
+} Snake;
 
-	int x, y; // initial position
-	int movX, movY;
-
-	char imagen;
-
-} snake;
-
-typedef struct
+int size(Snake *S)
 {
+    if (S == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        int size = 0;
+        for (; S != NULL; S = S->next)
+        {
+            size++;
+        }
+        return size;
+    }
+}
 
-	int x, y;
+void destroy(Snake **S)
+{
+    Snake *p = *S;
+    Snake *temp;
+    while (p != NULL)
+    {
+        temp = p;
+        p = p->next;
+        free(temp);
+    }
+    *S = NULL;
+}
 
-} fruit;
+int bite(Snake *S)
+{
+    int xt = S->x;
+    int yt = S->y;
+    for (Snake *p = S->next; p != NULL; p = p->next)
+    {
+        if (p->x == xt && p->y == yt)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
 
-snake snk[N]; // maximun size
-fruit frt;
+Snake *insert_head(Snake *S, int x, int y)
+{
+    Snake *nS = (Snake *)malloc(sizeof(Snake));
+    if (nS == NULL)
+    {
+        puts("Insufficient memory.");
+        exit(1);
+    }
+    else
+    {
+        nS->x = x;
+        nS->y = y;
+        if (S == NULL)
+        {
+            nS->next = NULL;
+            S = nS;
+        }
+        else
+        {
+            nS->next = S;
+            S = nS;
+        }
+    }
+    return S;
+}
 
-void begin(int *size, char map[V][H]);
-void intro(char map[V][H]);
-void intro_data(char map[V][H], int *size);
-void loop(char map[V][H], int size);
-void input(char map[V][H], int *size, int *dead);
-void update(char map[V][H], int size);
-void intro_data2(char map[V][H], int size);
+Snake *remove_tail(Snake *S)
+{
+    if (S == NULL)
+    {
+        puts("Nothing to remove.");
+        return S;
+    }
+    else if (S->next == NULL)
+    {
+        free(S);
+        return NULL;
+    }
+    else
+    {
+        Snake *p = S;
+        Snake *supp;
+        for (; p->next->next != NULL; p = p->next)
+            ;
+        supp = p->next;
+        p->next = NULL;
+        free(supp);
+        return S;
+    }
+}
 
-void gotoxy(int x, int y); // This function was suggested by a friend to get better performance
+Snake *move(Snake *S, char direction)
+{
+    if (direction == 'N')
+    {
+        if (S->y == 0)
+        {
+            S = insert_head(S, S->x, 9);
+            S = remove_tail(S);
+        }
+        else
+        {
+            S = insert_head(S, S->x, S->y - 1);
+            S = remove_tail(S);
+        }
+    }
+    else if (direction == 'S')
+    {
+        if (S->y == 9)
+        {
+            S = insert_head(S, S->x, 0);
+            S = remove_tail(S);
+        }
+        else
+        {
+            S = insert_head(S, S->x, S->y + 1);
+            S = remove_tail(S);
+        }
+    }
+    else if (direction == 'E')
+    {
+        if (S->x == 9)
+        {
+            S = insert_head(S, 0, S->y);
+            S = remove_tail(S);
+        }
+        else
+        {
+            S = insert_head(S, S->x + 1, S->y);
+            S = remove_tail(S);
+        }
+    }
+    else if (direction == 'W')
+    {
+        if (S->x == 0)
+        {
+            S = insert_head(S, 9, S->y);
+            S = remove_tail(S);
+        }
+        else
+        {
+            S = insert_head(S, S->x - 1, S->y);
+            S = remove_tail(S);
+        }
+    }
+    else
+    {
+        puts("Invalid choice.");
+    }
+    if (bite(S) == 1)
+    {
+        printf("Lost. Snake size: %d\n", size(S));
+        destroy(&S);
+    }
+    return S;
+}
 
-void show(char map[V][H]);
+Snake *gain(Snake *S, int x1, int y1, char direction)
+{
+    if (S->x == x1 && S->y == y1)
+    {
+        if (direction == 'N')
+        {
+            if (S->y == 0)
+                S = insert_head(S, S->x, 9);
+            else
+                S = insert_head(S, S->x, S->y - 1);
+        }
+        else if (direction == 'S')
+        {
+            if (S->y == 9)
+                S = insert_head(S, S->x, 0);
+            else
+                S = insert_head(S, S->x, S->y + 1);
+        }
+        else if (direction == 'E')
+        {
+            if (S->x == 9)
+                S = insert_head(S, 0, S->y);
+            else
+                S = insert_head(S, S->x + 1, S->y);
+        }
+        else if (direction == 'W')
+        {
+            if (S->x == 0)
+                S = insert_head(S, 9, S->y);
+            else
+                S = insert_head(S, S->x - 1, S->y);
+        }
+    }
+    else
+    {
+        S = move(S, direction);
+    }
+
+    if (bite(S) == 1)
+    {
+        printf("Lost. Snake size: %d\n", size(S));
+        destroy(&S);
+    }
+
+    return S;
+}
+
+void display_grid(Snake *S, int xPrey, int yPrey)
+{
+    for (int y = 0; y < 10; y++)
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            if (x == xPrey && y == yPrey)
+            {
+                printf("P");
+            }
+            else
+            {
+                Snake *temp = S;
+                int snakeFound = 0;
+                while (temp != NULL)
+                {
+                    if (temp->x == x && temp->y == y)
+                    {
+                        printf("S");
+                        snakeFound = 1;
+                        break;
+                    }
+                    temp = temp->next;
+                }
+                if (!snakeFound)
+                {
+                    printf(".");
+                }
+            }
+        }
+        printf("\n");
+    }
+}
 
 int main()
 {
-
-	int size;
-
-	char map[V][H];
-
-	begin(&size, map);
-	show(map);
-	system("pause");
-	loop(map, size);
-
-	system("pause");
-	return 0;
-}
-
-// Initialized in a initial position
-void begin(int *size, char map[V][H])
-{
-	int i;
-	// snake head
-	snk[0].x = 32;
-	snk[0].y = 10; // V
-	// snake body
-	*size = 4;
-
-	srand(time(NULL));
-
-	frt.x = rand() % (H - 2) + 1; // automatic position of fruit
-	frt.y = rand() % (V - 2) + 1;
-
-	for (i = 0; i < *size; i++)
-	{
-
-		snk[i].movX = 1;
-		snk[i].movY = 0;
-
-	} // snake only move on X
-
-	intro(map);
-	intro_data(map, size);
-}
-
-// Show everything
-void show(char map[V][H])
-{
-
-	int i, j;
-
-	for (i = 0; i < V; i++)
-	{
-
-		for (j = 0; j < H; j++)
-		{
-
-			printf("%c", map[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-// The camp (map).
-void intro(char map[V][H])
-{
-	int i, j;
-
-	for (i = 0; i < V; i++)
-	{
-
-		for (j = 0; j < H; j++)
-		{
-
-			if (i == 0 || i == V - 1)
-			{
-
-				map[i][j] = '-';
-			}
-			else if (j == 0 || j == H - 1)
-			{
-
-				map[i][j] = '|';
-			}
-			else
-			{
-				map[i][j] = ' ';
-			}
-		}
-	}
-}
-
-// Introduce every data inIT
-void intro_data(char map[V][H], int *size)
-{
-
-	int i;
-
-	for (i = 1; i < *size; i++)
-	{
-
-		snk[i].x = snk[i - 1].x - 1;
-		snk[i].y = snk[i - 1].y;
-
-		snk[i].imagen = 'X'; // body
-	}
-	snk[0].imagen = 'O'; // head
-
-	// Introduce snake into our camp
-
-	for (i = 0; i < *size; i++)
-	{
-
-		map[snk[i].y][snk[i].x] = snk[i].imagen;
-	}
-
-	map[frt.y][frt.x] = 'M'; // fruit
-}
-
-void loop(char map[V][H], int size)
-{
-
-	int dead;
-
-	dead = 0;
-
-	do
-	{
-		gotoxy(0, 0);
-
-		show(map);
-		input(map, &size, &dead);
-		update(map, size); // automatic
-
-	} while (dead == 0);
-}
-
-void input(char map[V][H], int *size, int *dead)
-{
-	int i;
-	char key;
-
-	// Only two ways to die, collision with map or body, every part of the snake is an diferent structure
-
-	// CHECK GAME CONDITIONS
-
-	if (snk[0].x == 0 || snk[0].x == H - 1 || snk[0].y == 0 || snk[0].y == V - 1)
-	{ // 0 es la cabeza de la serpiente, solo evaluaremos cuando la cabeza choque.
-
-		*dead = 1;
-	}
-
-	for (i = 1; i < *size && *dead == 0; i++)
-	{
-
-		if (snk[0].x == snk[i].x && snk[0].y == snk[i].y)
-		{
-			*dead = 1;
-		}
-	}
-
-	// CHECK FRUIT, IF HEAD GET CLOSE, EAT IT!
-
-	if (snk[0].x == frt.x && snk[0].y == frt.y)
-	{
-
-		*size += 1;
-
-		snk[*size - 1].imagen = 'X';
-
-		// Regenerated fruit position in a random position
-
-		frt.x = rand() % (H - 2) + 1;
-		frt.y = rand() % (V - 2) + 1;
-	}
-
-	// IF DEAD IS ZERO WE CAN KEEP GOING
-
-	if (*dead == 0)
-	{
-
-		if (kbhit() == 1)
-		{
-
-			key = getch();
-
-			if (key == 's' && snk[0].movY != -1)
-			{
-
-				snk[0].movX = 0;
-				snk[0].movY = 1;
-			}
-
-			if (key == 'w' && snk[0].movY != 1)
-			{
-
-				snk[0].movX = 0;
-				snk[0].movY = -1;
-			}
-
-			if (key == 'a' && snk[0].movX != 1)
-			{
-
-				snk[0].movX = -1;
-				snk[0].movY = 0;
-			}
-
-			if (key == 'd' && snk[0].movX != -1)
-			{
-
-				snk[0].movX = 1;
-				snk[0].movY = 0;
-			}
-		}
-	}
-}
-
-void update(char map[V][H], int size)
-{
-
-	// Everytime this function is called, the map is overwriting
-
-	intro(map);
-
-	intro_data2(map, size);
-}
-
-void intro_data2(char map[V][H], int size)
-{
-
-	int i;
-
-	// Body following the head
-
-	for (i = size - 1; i > 0; i--)
-	{ // 0 is the head. so we going decresing until extremities
-
-		snk[i].x = snk[i - 1].x;
-		snk[i].y = snk[i - 1].y;
-	}
-
-	snk[0].x += snk[0].movX; // plus movemenrts
-	snk[0].y += snk[0].movY;
-
-	// now introduce the values in the camp
-
-	for (i = 0; i < size; i++)
-	{
-
-		map[snk[i].y][snk[i].x] = snk[i].imagen;
-	}
-
-	map[frt.y][frt.x] = 'M';
-}
-
-void gotoxy(int x, int y)
-{ // tbh idk what the hell this function is, originally i used another but this works fine (thought) :)
-	COORD coord;
-	coord.X = x;
-	coord.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    srand(time(NULL));
+    Snake *snake = insert_head(NULL, 5, 5);
+    int prey_x = rand() % 10;
+    int prey_y = rand() % 10;
+    while (1)
+    {
+        display_grid(snake, prey_x, prey_y);
+        printf("Enter a direction (N/S/E/W): ");
+        char direction;
+        scanf(" %c", &direction);
+        if (snake->x == prey_x && snake->y == prey_y)
+        {
+            snake = gain(snake, prey_x, prey_y, direction);
+            prey_x = rand() % 10;
+            prey_y = rand() % 10;
+        }
+        else
+        {
+            snake = move(snake, direction);
+        }
+        if (bite(snake))
+        {
+            printf("Lost! Final snake size: %d\n", size(snake));
+            destroy(&snake);
+            break;
+        }
+    }
+
+    return 0;
 }
