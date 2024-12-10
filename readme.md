@@ -11,7 +11,7 @@ make
 cd ..
 ```
 
-To test the pass on C programs
+To test the pass on C programs  
 In the root directory, run with debug info
 ```
 clang -O0 -g -fno-discard-value-names -fpass-plugin=`echo build/part1/part1pass.*` example.c
@@ -31,7 +31,7 @@ Tracing variable defined by instruction:   %1 = load i32, i32* %n, align 4, !dbg
 	   Value originates from scanf:   %call = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([7 x i8], [7 x i8]* @.str, i64 0, i64 0), i32* noundef %id, i32* noundef %n), !dbg !19 --
 ```
 
-It includes the variable name and Location
+It includes the variable name and Location  
 If it finds that the variable is from a seminal input, it will print `--- SEMINAL INPUT ---` and additional information on where the input value is from
 
 ---
