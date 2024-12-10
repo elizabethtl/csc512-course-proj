@@ -1,14 +1,13 @@
 #include <stdio.h>
 
-int print(){
-	printf("hello world\n");
-	return 0;
-}
-
 int main(){
-	print();
-
-	int a = 0;
-	int b = 1;
-	int c = a + b;
+   int id;
+   int n;
+   scanf("%d, %d", &id, &n);
+   int s = 0;
+   for (int i=0;i<n;i++){
+      s += 1;
+   }
+   printf("id=%d; sum=%d\n", id, n); 
 }
+

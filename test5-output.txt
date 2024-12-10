@@ -1,0 +1,710 @@
+test5-cafeteria-system.c:267:59: warning: passing 'const char *' to parameter of type 'char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        struct OrderItem *orderItem = createOrderItemNode(name, current->price, quantity, customerName);
+                                                          ^~~~
+test5-cafeteria-system.c:234:44: note: passing argument to parameter 'name' here
+struct OrderItem *createOrderItemNode(char name[], float pricePerUnit, int quantity, char customerName[])
+                                           ^
+test5-cafeteria-system.c:569:19: warning: incompatible pointer types assigning to 'struct OrderItem *' from 'struct FoodItem *' [-Wincompatible-pointer-types]
+    newNode->data = data;
+                  ^ ~~~~
+test5-cafeteria-system.c:581:30: warning: declaration of 'struct OrderQueue' will not be visible outside of this function [-Wvisibility]
+int isOrderQueueEmpty(struct OrderQueue *orderQueue)
+                             ^
+test5-cafeteria-system.c:595:57: warning: incompatible pointer types passing 'struct OrderItem *' to parameter of type 'struct FoodItem *' [-Wincompatible-pointer-types]
+  struct OrderQueueNode *newNode = createOrderQueueNode(data);
+                                                        ^~~~
+test5-cafeteria-system.c:564:62: note: passing argument to parameter 'data' here
+struct OrderQueueNode *createOrderQueueNode(struct FoodItem *data)
+                                                             ^
+test5-cafeteria-system.c:635:5: warning: implicit declaration of function 'usleep' is invalid in C99 [-Wimplicit-function-declaration]
+    usleep(50000); // Introduce a delay of 500,000 microseconds (0.5 seconds) between dots
+    ^
+test5-cafeteria-system.c:844:34: warning: incompatible pointer types passing 'struct OrderQueueNode **' to parameter of type 'struct OrderQueue *' [-Wincompatible-pointer-types]
+          if (!isOrderQueueEmpty(&front))
+                                 ^~~~~~
+test5-cafeteria-system.c:581:42: note: passing argument to parameter 'orderQueue' here
+int isOrderQueueEmpty(struct OrderQueue *orderQueue)
+                                         ^
+Tracing variable defined by instruction:   %cmp = icmp eq i32 %call8, 0, !dbg !81
+  called function: strcmp
+Tracing variable defined by instruction:   %call8 = call i32 @strcmp(i8* noundef %arraydecay6, i8* noundef %arraydecay7) #5, !dbg !80
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay6 = getelementptr inbounds [20 x i8], [20 x i8]* %username5, i64 0, i64 0, !dbg !76
+Tracing variable defined by instruction:   %username5 = getelementptr inbounds %struct.User, %struct.User* %0, i32 0, i32 0, !dbg !78
+Tracing variable defined by instruction:   %0 = load %struct.User*, %struct.User** %currentUser.addr, align 8, !dbg !76
+	Variable originates from an alloca:   %currentUser.addr = alloca %struct.User*, align 8
+	Value has name: 1, value name: currentUser.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.User* %currentUser
+	Value has name: 1, value name: currentUser
+	findDefUseChains()
+Tracing variable defined by instruction:   %arraydecay7 = getelementptr inbounds [20 x i8], [20 x i8]* %username, i64 0, i64 0, !dbg !79
+	Variable originates from an alloca:   %username = alloca [20 x i8], align 16
+	Value has name: 1, value name: username
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:75:15
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp13 = icmp eq i32 %call12, 0, !dbg !87
+  called function: strcmp
+Tracing variable defined by instruction:   %call12 = call i32 @strcmp(i8* noundef %arraydecay10, i8* noundef %arraydecay11) #5, !dbg !86
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay10 = getelementptr inbounds [20 x i8], [20 x i8]* %password9, i64 0, i64 0, !dbg !83
+Tracing variable defined by instruction:   %password9 = getelementptr inbounds %struct.User, %struct.User* %1, i32 0, i32 1, !dbg !84
+Tracing variable defined by instruction:   %arraydecay11 = getelementptr inbounds [20 x i8], [20 x i8]* %password, i64 0, i64 0, !dbg !85
+	Variable originates from an alloca:   %password = alloca [20 x i8], align 16
+	Value has name: 1, value name: password
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:77:15
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %1, null, !dbg !76
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %newItem, align 8, !dbg !74
+	Variable originates from an alloca:   %newItem = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: newItem
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:105:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %0 = bitcast i8* %call to %struct.FoodItem*, !dbg !73
+  called function: malloc
+Tracing variable defined by instruction:   %call = call noalias i8* @malloc(i64 noundef 120) #5, !dbg !72
+  called function: malloc
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %2, null, !dbg !75
+Tracing variable defined by instruction:   %2 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !74
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:141:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %10 = load %struct.FoodItem*, %struct.FoodItem** %next, align 8, !dbg !99
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %9, i32 0, i32 3, !dbg !99
+Tracing variable defined by instruction:   %9 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !98
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %0, align 8, !dbg !72
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem**, %struct.FoodItem*** %head.addr, align 8, !dbg !71
+	Variable originates from an alloca:   %head.addr = alloca %struct.FoodItem**, align 8
+	Value has name: 1, value name: head.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem** %head
+	Value has name: 1, value name: head
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp1 = icmp eq i32 %call, 0, !dbg !82
+  called function: strcmp
+Tracing variable defined by instruction:   %call = call i32 @strcmp(i8* noundef %arraydecay, i8* noundef %4) #5, !dbg !81
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [100 x i8], [100 x i8]* %name, i64 0, i64 0, !dbg !76
+Tracing variable defined by instruction:   %name = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %3, i32 0, i32 0, !dbg !79
+Tracing variable defined by instruction:   %4 = load i8*, i8** %oldName.addr, align 8, !dbg !80
+	Variable originates from an alloca:   %oldName.addr = alloca i8*, align 8
+	Value has name: 1, value name: oldName.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %oldName
+	Value has name: 1, value name: oldName
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %2, null, !dbg !77
+Tracing variable defined by instruction:   %2 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !76
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:166:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %16 = load %struct.FoodItem*, %struct.FoodItem** %next9, align 8, !dbg !110
+Tracing variable defined by instruction:   %next9 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %15, i32 0, i32 3, !dbg !110
+Tracing variable defined by instruction:   %15 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !109
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %0, align 8, !dbg !72
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem**, %struct.FoodItem*** %head.addr, align 8, !dbg !71
+	Variable originates from an alloca:   %head.addr = alloca %struct.FoodItem**, align 8
+	Value has name: 1, value name: head.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem** %head
+	Value has name: 1, value name: head
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp2 = icmp eq i32 %call, 0, !dbg !84
+  called function: strcmp
+Tracing variable defined by instruction:   %call = call i32 @strcmp(i8* noundef %arraydecay, i8* noundef %4) #5, !dbg !83
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [100 x i8], [100 x i8]* %name1, i64 0, i64 0, !dbg !78
+Tracing variable defined by instruction:   %name1 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %3, i32 0, i32 0, !dbg !81
+Tracing variable defined by instruction:   %4 = load i8*, i8** %name.addr, align 8, !dbg !82
+	Variable originates from an alloca:   %name.addr = alloca i8*, align 8
+	Value has name: 1, value name: name.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %name
+	Value has name: 1, value name: name
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp3 = icmp eq %struct.FoodItem* %5, null, !dbg !89
+Tracing variable defined by instruction:   %5 = load %struct.FoodItem*, %struct.FoodItem** %prev, align 8, !dbg !86
+	Variable originates from an alloca:   %prev = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: prev
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:167:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %1, null, !dbg !70
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !68
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:197:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %10 = load %struct.FoodItem*, %struct.FoodItem** %next, align 8, !dbg !95
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %9, i32 0, i32 3, !dbg !95
+Tracing variable defined by instruction:   %9 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !94
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem*, %struct.FoodItem** %head.addr, align 8, !dbg !67
+	Variable originates from an alloca:   %head.addr = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: head.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem* %head
+	Value has name: 1, value name: head
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp4 = icmp ne %struct.FoodItem* %2, null, !dbg !84
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.OrderItem* %1, null, !dbg !78
+Tracing variable defined by instruction:   %1 = load %struct.OrderItem*, %struct.OrderItem** %newItem, align 8, !dbg !76
+	Variable originates from an alloca:   %newItem = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: newItem
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:236:21
+	findDefUseChains()
+Tracing variable defined by instruction:   %0 = bitcast i8* %call to %struct.OrderItem*, !dbg !75
+  called function: malloc
+Tracing variable defined by instruction:   %call = call noalias i8* @malloc(i64 noundef 216) #5, !dbg !74
+  called function: malloc
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %2, null, !dbg !84
+Tracing variable defined by instruction:   %2 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !83
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:259:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %23 = load %struct.FoodItem*, %struct.FoodItem** %next10, align 8, !dbg !128
+Tracing variable defined by instruction:   %next10 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %22, i32 0, i32 3, !dbg !128
+Tracing variable defined by instruction:   %22 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !127
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %0, align 8, !dbg !81
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem**, %struct.FoodItem*** %menu.addr, align 8, !dbg !80
+	Variable originates from an alloca:   %menu.addr = alloca %struct.FoodItem**, align 8
+	Value has name: 1, value name: menu.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem** %menu
+	Value has name: 1, value name: menu
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp2 = icmp eq i32 %call, 0, !dbg !91
+  called function: strcmp
+Tracing variable defined by instruction:   %call = call i32 @strcmp(i8* noundef %arraydecay, i8* noundef %4) #5, !dbg !90
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [100 x i8], [100 x i8]* %name1, i64 0, i64 0, !dbg !85
+Tracing variable defined by instruction:   %name1 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %3, i32 0, i32 0, !dbg !88
+Tracing variable defined by instruction:   %4 = load i8*, i8** %name.addr, align 8, !dbg !89
+	Variable originates from an alloca:   %name.addr = alloca i8*, align 8
+	Value has name: 1, value name: name.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %name
+	Value has name: 1, value name: name
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp4 = icmp sge i32 %6, %7, !dbg !98
+Tracing variable defined by instruction:   %6 = load i32, i32* %quantity3, align 8, !dbg !96
+Tracing variable defined by instruction:   %quantity3 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %5, i32 0, i32 2, !dbg !96
+Tracing variable defined by instruction:   %7 = load i32, i32* %quantity.addr, align 4, !dbg !97
+	Variable originates from an alloca:   %quantity.addr = alloca i32, align 4
+	Value has name: 1, value name: quantity.addr
+	findDefUseChains()
+	Variable originates as a function argument: i32 %quantity
+	Value has name: 1, value name: quantity
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq %struct.OrderItem* %0, null, !dbg !70
+Tracing variable defined by instruction:   %0 = load %struct.OrderItem*, %struct.OrderItem** %order.addr, align 8, !dbg !68
+	Variable originates from an alloca:   %order.addr = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: order.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderItem* %order
+	Value has name: 1, value name: order
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp6 = icmp ne %struct.OrderItem* %2, null, !dbg !83
+Tracing variable defined by instruction:   %2 = load %struct.OrderItem*, %struct.OrderItem** %current, align 8, !dbg !82
+	Variable originates from an alloca:   %current = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:308:23
+	findDefUseChains()
+Tracing variable defined by instruction:   %10 = load %struct.OrderItem*, %struct.OrderItem** %next, align 8, !dbg !95
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.OrderItem, %struct.OrderItem* %9, i32 0, i32 4, !dbg !95
+Tracing variable defined by instruction:   %9 = load %struct.OrderItem*, %struct.OrderItem** %current, align 8, !dbg !94
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.OrderItem* %1, null, !dbg !74
+Tracing variable defined by instruction:   %1 = load %struct.OrderItem*, %struct.OrderItem** %current, align 8, !dbg !73
+	Variable originates from an alloca:   %current = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:322:21
+	findDefUseChains()
+Tracing variable defined by instruction:   %6 = load %struct.OrderItem*, %struct.OrderItem** %next, align 8, !dbg !80
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.OrderItem, %struct.OrderItem* %5, i32 0, i32 4, !dbg !80
+Tracing variable defined by instruction:   %5 = load %struct.OrderItem*, %struct.OrderItem** %current, align 8, !dbg !79
+Tracing variable defined by instruction:   %0 = load %struct.OrderItem*, %struct.OrderItem** %order.addr, align 8, !dbg !68
+	Variable originates from an alloca:   %order.addr = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: order.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderItem* %order
+	Value has name: 1, value name: order
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %1, null, !dbg !73
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !72
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:335:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %7 = load %struct.FoodItem*, %struct.FoodItem** %next, align 8, !dbg !87
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %6, i32 0, i32 3, !dbg !87
+Tracing variable defined by instruction:   %6 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !86
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem*, %struct.FoodItem** %menu.addr, align 8, !dbg !70
+	Variable originates from an alloca:   %menu.addr = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: menu.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem* %menu
+	Value has name: 1, value name: menu
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp2 = icmp eq i32 %call, 0, !dbg !80
+  called function: strcmp
+Tracing variable defined by instruction:   %call = call i32 @strcmp(i8* noundef %arraydecay, i8* noundef %3) #5, !dbg !79
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [100 x i8], [100 x i8]* %name1, i64 0, i64 0, !dbg !74
+Tracing variable defined by instruction:   %name1 = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %2, i32 0, i32 0, !dbg !77
+Tracing variable defined by instruction:   %3 = load i8*, i8** %name.addr, align 8, !dbg !78
+	Variable originates from an alloca:   %name.addr = alloca i8*, align 8
+	Value has name: 1, value name: name.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %name
+	Value has name: 1, value name: name
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct._IO_FILE* %0, null, !dbg !127
+Tracing variable defined by instruction:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %file, align 8, !dbg !125
+	Variable originates from an alloca:   %file = alloca %struct._IO_FILE*, align 8
+	Value has name: 1, value name: file
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:357:9
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.32, i64 0, i64 0)), !dbg !124
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp2 = icmp eq i32 %call1, 3, !dbg !145
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call1 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %1, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !144 --
+Tracing variable defined by instruction:   %call1 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %1, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !144
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call1 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %1, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !144 --
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [50 x i8], [50 x i8]* %name, i64 0, i64 0, !dbg !143
+	Variable originates from an alloca:   %name = alloca [50 x i8], align 16
+	Value has name: 1, value name: name
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:364:39
+	findDefUseChains()
+	Variable originates from an alloca:   %price = alloca float, align 4
+	Value has name: 1, value name: price
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:364:12
+	findDefUseChains()
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call1 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %1, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !144 --
+	Variable originates from an alloca:   %quantity = alloca i32, align 4
+	Value has name: 1, value name: quantity
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:364:12
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp5 = icmp ne %struct.FoodItem* %4, null, !dbg !155
+Tracing variable defined by instruction:   %4 = load %struct.FoodItem*, %struct.FoodItem** %newItem, align 8, !dbg !153
+	Variable originates from an alloca:   %newItem = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: newItem
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:366:24
+	findDefUseChains()
+  called function: createFoodItemNode
+Tracing variable defined by instruction:   %call4 = call %struct.FoodItem* @createFoodItemNode(i8* noundef %arraydecay3, float noundef %2, i32 noundef %3), !dbg !152
+  called function: createFoodItemNode
+Tracing variable defined by instruction:   %cmp = icmp ne %struct._IO_FILE* %0, null, !dbg !127
+Tracing variable defined by instruction:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %file, align 8, !dbg !125
+	Variable originates from an alloca:   %file = alloca %struct._IO_FILE*, align 8
+	Value has name: 1, value name: file
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:388:9
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.35, i64 0, i64 0)), !dbg !124
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp1 = icmp ne %struct.FoodItem* %2, null, !dbg !135
+Tracing variable defined by instruction:   %2 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !134
+	Variable originates from an alloca:   %current = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:391:22
+	findDefUseChains()
+Tracing variable defined by instruction:   %10 = load %struct.FoodItem*, %struct.FoodItem** %next, align 8, !dbg !146
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %9, i32 0, i32 3, !dbg !146
+Tracing variable defined by instruction:   %9 = load %struct.FoodItem*, %struct.FoodItem** %current, align 8, !dbg !145
+Tracing variable defined by instruction:   %1 = load %struct.FoodItem*, %struct.FoodItem** %head.addr, align 8, !dbg !132
+	Variable originates from an alloca:   %head.addr = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: head.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.FoodItem* %head
+	Value has name: 1, value name: head
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %0, null, !dbg !129
+Tracing variable defined by instruction:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %file, align 8, !dbg !127
+	Variable originates from an alloca:   %file = alloca %struct._IO_FILE*, align 8
+	Value has name: 1, value name: file
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:411:9
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.32, i64 0, i64 0)), !dbg !126
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.31, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp3 = icmp eq %struct._IO_FILE* %1, null, !dbg !139
+Tracing variable defined by instruction:   %1 = load %struct._IO_FILE*, %struct._IO_FILE** %tempFile, align 8, !dbg !137
+	Variable originates from an alloca:   %tempFile = alloca %struct._IO_FILE*, align 8
+	Value has name: 1, value name: tempFile
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:418:9
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.39, i64 0, i64 0)
+Tracing variable defined by instruction:   %call2 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.39, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.35, i64 0, i64 0)), !dbg !136
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.39, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp9 = icmp eq i32 %call8, 3, !dbg !161
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call8 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %3, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !160 --
+Tracing variable defined by instruction:   %call8 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %3, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !160
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call8 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %3, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !160 --
+Tracing variable defined by instruction:   %arraydecay = getelementptr inbounds [50 x i8], [50 x i8]* %name, i64 0, i64 0, !dbg !159
+	Variable originates from an alloca:   %name = alloca [50 x i8], align 16
+	Value has name: 1, value name: name
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:432:37
+	findDefUseChains()
+	Variable originates from an alloca:   %price = alloca float, align 4
+	Value has name: 1, value name: price
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:432:10
+	findDefUseChains()
+  called function: __isoc99_fscanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call8 = call i32 (%struct._IO_FILE*, i8*, ...) @__isoc99_fscanf(%struct._IO_FILE* noundef %3, i8* noundef getelementptr inbounds ([10 x i8], [10 x i8]* @.str.33, i64 0, i64 0), i8* noundef %arraydecay, float* noundef %price, i32* noundef %quantity), !dbg !160 --
+	Variable originates from an alloca:   %quantity = alloca i32, align 4
+	Value has name: 1, value name: quantity
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:432:10
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp12 = icmp eq i32 %call11, 0, !dbg !167
+  called function: strcmp
+Tracing variable defined by instruction:   %call11 = call i32 @strcmp(i8* noundef %arraydecay10, i8* noundef %4) #5, !dbg !166
+  called function: strcmp
+Tracing variable defined by instruction:   %4 = load i8*, i8** %itemName.addr, align 8, !dbg !165
+	Variable originates from an alloca:   %itemName.addr = alloca i8*, align 8
+	Value has name: 1, value name: itemName.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %itemName
+	Value has name: 1, value name: itemName
+	findDefUseChains()
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %10, 0, !dbg !186
+Tracing variable defined by instruction:   %10 = load i32, i32* %itemFound, align 4, !dbg !186
+	Variable originates from an alloca:   %itemFound = alloca i32, align 4
+	Value has name: 1, value name: itemFound
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:429:7
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.StackNode* %1, null, !dbg !79
+Tracing variable defined by instruction:   %1 = load %struct.StackNode*, %struct.StackNode** %newNode, align 8, !dbg !77
+	Variable originates from an alloca:   %newNode = alloca %struct.StackNode*, align 8
+	Value has name: 1, value name: newNode
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:473:21
+	findDefUseChains()
+Tracing variable defined by instruction:   %0 = bitcast i8* %call1 to %struct.StackNode*, !dbg !76
+  called function: malloc
+Tracing variable defined by instruction:   %call1 = call noalias i8* @malloc(i64 noundef 120) #5, !dbg !75
+  called function: malloc
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.StackNode* %2, null, !dbg !78
+Tracing variable defined by instruction:   %2 = load %struct.StackNode*, %struct.StackNode** %newNode, align 8, !dbg !76
+	Variable originates from an alloca:   %newNode = alloca %struct.StackNode*, align 8
+	Value has name: 1, value name: newNode
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:494:21
+	findDefUseChains()
+  called function: createStackNode
+Tracing variable defined by instruction:   %call = call %struct.StackNode* @createStackNode(i8* noundef %0, %struct.OrderItem* noundef %1), !dbg !75
+  called function: createStackNode
+Tracing variable defined by instruction:   %0 = load i8*, i8** %customerName.addr, align 8, !dbg !73
+	Variable originates from an alloca:   %customerName.addr = alloca i8*, align 8
+	Value has name: 1, value name: customerName.addr
+	findDefUseChains()
+	Variable originates as a function argument: i8* %customerName
+	Value has name: 1, value name: customerName
+	findDefUseChains()
+Tracing variable defined by instruction:   %1 = load %struct.OrderItem*, %struct.OrderItem** %orderInfo.addr, align 8, !dbg !74
+	Variable originates from an alloca:   %orderInfo.addr = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: orderInfo.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderItem* %orderInfo
+	Value has name: 1, value name: orderInfo
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq %struct.StackNode* %1, null, !dbg !69
+Tracing variable defined by instruction:   %1 = load %struct.StackNode*, %struct.StackNode** %0, align 8, !dbg !68
+Tracing variable defined by instruction:   %0 = load %struct.StackNode**, %struct.StackNode*** %top.addr, align 8, !dbg !66
+	Variable originates from an alloca:   %top.addr = alloca %struct.StackNode**, align 8
+	Value has name: 1, value name: top.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.StackNode** %top
+	Value has name: 1, value name: top
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.StackNode* %0, null, !dbg !67
+Tracing variable defined by instruction:   %0 = load %struct.StackNode*, %struct.StackNode** %top.addr, align 8, !dbg !65
+	Variable originates from an alloca:   %top.addr = alloca %struct.StackNode*, align 8
+	Value has name: 1, value name: top.addr
+	findDefUseChains()
+Tracing variable defined by instruction:   %6 = load %struct.StackNode*, %struct.StackNode** %next, align 8, !dbg !83
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.StackNode, %struct.StackNode* %5, i32 0, i32 3, !dbg !83
+Tracing variable defined by instruction:   %5 = load %struct.StackNode*, %struct.StackNode** %top.addr, align 8, !dbg !82
+	Variable originates as a function argument: %struct.StackNode* %top
+	Value has name: 1, value name: top
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp3 = icmp ne %struct.StackNode* %1, null, !dbg !75
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.StackNode* %1, null, !dbg !69
+Tracing variable defined by instruction:   %1 = load %struct.StackNode*, %struct.StackNode** %0, align 8, !dbg !68
+Tracing variable defined by instruction:   %0 = load %struct.StackNode**, %struct.StackNode*** %top.addr, align 8, !dbg !67
+	Variable originates from an alloca:   %top.addr = alloca %struct.StackNode**, align 8
+	Value has name: 1, value name: top.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.StackNode** %top
+	Value has name: 1, value name: top
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.OrderQueueNode* %1, null, !dbg !71
+Tracing variable defined by instruction:   %1 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %newNode, align 8, !dbg !69
+	Variable originates from an alloca:   %newNode = alloca %struct.OrderQueueNode*, align 8
+	Value has name: 1, value name: newNode
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:566:26
+	findDefUseChains()
+Tracing variable defined by instruction:   %0 = bitcast i8* %call to %struct.OrderQueueNode*, !dbg !68
+  called function: malloc
+Tracing variable defined by instruction:   %call = call noalias i8* @malloc(i64 noundef 16) #5, !dbg !67
+  called function: malloc
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.OrderQueueNode* %2, null, !dbg !76
+Tracing variable defined by instruction:   %2 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %newNode, align 8, !dbg !74
+	Variable originates from an alloca:   %newNode = alloca %struct.OrderQueueNode*, align 8
+	Value has name: 1, value name: newNode
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:595:26
+	findDefUseChains()
+  called function: createOrderQueueNode
+Tracing variable defined by instruction:   %call = call %struct.OrderQueueNode* @createOrderQueueNode(%struct.FoodItem* noundef %1), !dbg !73
+  called function: createOrderQueueNode
+Tracing variable defined by instruction:   %1 = bitcast %struct.OrderItem* %0 to %struct.FoodItem*, !dbg !72
+Tracing variable defined by instruction:   %0 = load %struct.OrderItem*, %struct.OrderItem** %data.addr, align 8, !dbg !72
+	Variable originates from an alloca:   %data.addr = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: data.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderItem* %data
+	Value has name: 1, value name: data
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp1 = icmp eq %struct.OrderQueueNode* %4, null, !dbg !82
+Tracing variable defined by instruction:   %4 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %3, align 8, !dbg !81
+Tracing variable defined by instruction:   %3 = load %struct.OrderQueueNode**, %struct.OrderQueueNode*** %front.addr, align 8, !dbg !78
+	Variable originates from an alloca:   %front.addr = alloca %struct.OrderQueueNode**, align 8
+	Value has name: 1, value name: front.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderQueueNode** %front
+	Value has name: 1, value name: front
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq %struct.OrderQueueNode* %1, null, !dbg !69
+Tracing variable defined by instruction:   %1 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %0, align 8, !dbg !68
+Tracing variable defined by instruction:   %0 = load %struct.OrderQueueNode**, %struct.OrderQueueNode*** %front.addr, align 8, !dbg !66
+	Variable originates from an alloca:   %front.addr = alloca %struct.OrderQueueNode**, align 8
+	Value has name: 1, value name: front.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderQueueNode** %front
+	Value has name: 1, value name: front
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp7 = icmp slt i32 %16, 25, !dbg !102
+Tracing variable defined by instruction:   %16 = load i32, i32* %i, align 4, !dbg !100
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:631:12
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %18, 1, !dbg !110
+Tracing variable defined by instruction:   %18 = load i32, i32* %i, align 4, !dbg !110
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.OrderQueueNode* %1, null, !dbg !69
+Tracing variable defined by instruction:   %1 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %0, align 8, !dbg !68
+Tracing variable defined by instruction:   %0 = load %struct.OrderQueueNode**, %struct.OrderQueueNode*** %front.addr, align 8, !dbg !66
+	Variable originates from an alloca:   %front.addr = alloca %struct.OrderQueueNode**, align 8
+	Value has name: 1, value name: front.addr
+	findDefUseChains()
+	Variable originates as a function argument: %struct.OrderQueueNode** %front
+	Value has name: 1, value name: front
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp3 = icmp ne %struct.OrderQueueNode* %4, null, !dbg !83
+Tracing variable defined by instruction:   %4 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %current, align 8, !dbg !82
+	Variable originates from an alloca:   %current = alloca %struct.OrderQueueNode*, align 8
+	Value has name: 1, value name: current
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:661:28
+	findDefUseChains()
+Tracing variable defined by instruction:   %17 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %next, align 8, !dbg !100
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.OrderQueueNode, %struct.OrderQueueNode* %16, i32 0, i32 1, !dbg !100
+Tracing variable defined by instruction:   %16 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %current, align 8, !dbg !99
+Tracing variable defined by instruction:   %3 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %2, align 8, !dbg !78
+Tracing variable defined by instruction:   %cmp = icmp ne %struct.FoodItem* %0, null, !dbg !69
+Tracing variable defined by instruction:   %0 = load %struct.FoodItem*, %struct.FoodItem** %menu.addr, align 8, !dbg !68
+	Variable originates from an alloca:   %menu.addr = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: menu.addr
+	findDefUseChains()
+Tracing variable defined by instruction:   %3 = load %struct.FoodItem*, %struct.FoodItem** %next, align 8, !dbg !75
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.FoodItem, %struct.FoodItem* %2, i32 0, i32 3, !dbg !75
+Tracing variable defined by instruction:   %2 = load %struct.FoodItem*, %struct.FoodItem** %menu.addr, align 8, !dbg !74
+	Variable originates as a function argument: %struct.FoodItem* %menu
+	Value has name: 1, value name: menu
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp2 = icmp ne %struct.OrderItem* %6, null, !dbg !84
+Tracing variable defined by instruction:   %6 = load %struct.OrderItem*, %struct.OrderItem** %order.addr, align 8, !dbg !83
+	Variable originates from an alloca:   %order.addr = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: order.addr
+	findDefUseChains()
+Tracing variable defined by instruction:   %9 = load %struct.OrderItem*, %struct.OrderItem** %next4, align 8, !dbg !90
+Tracing variable defined by instruction:   %next4 = getelementptr inbounds %struct.OrderItem, %struct.OrderItem* %8, i32 0, i32 4, !dbg !90
+Tracing variable defined by instruction:   %8 = load %struct.OrderItem*, %struct.OrderItem** %order.addr, align 8, !dbg !89
+	Variable originates as a function argument: %struct.OrderItem* %order
+	Value has name: 1, value name: order
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq i32 %call19, 1, !dbg !122
+  called function: placeOrder
+Tracing variable defined by instruction:   %call19 = call i32 @placeOrder(%struct.FoodItem** noundef %menu, %struct.OrderItem** noundef %order, i8* noundef %arraydecay17, i32 noundef %2, i8* noundef %arraydecay18), !dbg !121
+  called function: placeOrder
+	Variable originates from an alloca:   %menu = alloca %struct.FoodItem*, align 8
+	Value has name: 1, value name: menu
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:708:20
+	findDefUseChains()
+  called function: placeOrder
+	Variable originates from an alloca:   %order = alloca %struct.OrderItem*, align 8
+	Value has name: 1, value name: order
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:709:21
+	findDefUseChains()
+  called function: placeOrder
+Tracing variable defined by instruction:   %arraydecay81 = getelementptr inbounds [50 x i8], [50 x i8]* %itemName, i64 0, i64 0, !dbg !215
+	Variable originates from an alloca:   %itemName = alloca [50 x i8], align 16
+	Value has name: 1, value name: itemName
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:743:19
+	findDefUseChains()
+Tracing variable defined by instruction:   %14 = load i32, i32* %itemQuantity, align 4, !dbg !217
+	Variable originates from an alloca:   %itemQuantity = alloca i32, align 4
+	Value has name: 1, value name: itemQuantity
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:745:7
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call80 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %itemQuantity), !dbg !214 --
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call59 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %itemQuantity), !dbg !187 --
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call16 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %itemQuantity), !dbg !116 --
+Tracing variable defined by instruction:   %arraydecay82 = getelementptr inbounds [100 x i8], [100 x i8]* %customerName, i64 0, i64 0, !dbg !218
+	Variable originates from an alloca:   %customerName = alloca [100 x i8], align 16
+	Value has name: 1, value name: customerName
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:741:19
+	findDefUseChains()
+  called function: placeOrder
+  called function: deleteFoodItem
+  called function: editFoodItem
+Tracing variable defined by instruction:   %arraydecay65 = getelementptr inbounds [50 x i8], [50 x i8]* %editItemName, i64 0, i64 0, !dbg !196
+	Variable originates from an alloca:   %editItemName = alloca [50 x i8], align 16
+	Value has name: 1, value name: editItemName
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:803:23
+	findDefUseChains()
+  called function: addFoodItem
+Tracing variable defined by instruction:   %12 = load float, float* %itemPrice, align 4, !dbg !189
+	Variable originates from an alloca:   %itemPrice = alloca float, align 4
+	Value has name: 1, value name: itemPrice
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:748:19
+	findDefUseChains()
+  called function: getPriceByName
+Tracing variable defined by instruction:   %call87 = call float @getPriceByName(%struct.FoodItem* noundef %15, i8* noundef %arraydecay86), !dbg !225
+  called function: getPriceByName
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call57 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.90, i64 0, i64 0), float* noundef %itemPrice), !dbg !185 --
+  called function: getPriceByName
+Tracing variable defined by instruction:   %call21 = call float @getPriceByName(%struct.FoodItem* noundef %3, i8* noundef %arraydecay20), !dbg !127
+  called function: getPriceByName
+Tracing variable defined by instruction:   %3 = load %struct.FoodItem*, %struct.FoodItem** %menu, align 8, !dbg !124
+  called function: loadMenuFromFile
+Tracing variable defined by instruction:   %call = call %struct.FoodItem* @loadMenuFromFile(), !dbg !74
+  called function: loadMenuFromFile
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %10, 0, !dbg !158
+Tracing variable defined by instruction:   %10 = load i32, i32* %isAuthenticated, align 4, !dbg !158
+	Variable originates from an alloca:   %isAuthenticated = alloca i32, align 4
+	Value has name: 1, value name: isAuthenticated
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:722:7
+	findDefUseChains()
+  called function: authenticate
+Tracing variable defined by instruction:   %call33 = call i32 @authenticate(%struct.User* noundef @admin), !dbg !152
+  called function: authenticate
+	Variable originates from a global variable: @admin = dso_local global %struct.User { [20 x i8] c"admin\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00", [20 x i8] c"123\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00" }, align 1, !dbg !0
+	Value has name: 1, value name: admin
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:760:25
+	findDefUseChains()
+  called function: authenticate
+Tracing variable defined by instruction:   %cmp84 = icmp eq i32 %call83, 1, !dbg !220
+  called function: placeOrder
+Tracing variable defined by instruction:   %tobool105 = icmp ne i32 %call104, 0, !dbg !261
+  called function: isOrderQueueEmpty
+Tracing variable defined by instruction:   %call104 = call i32 @isOrderQueueEmpty(%struct.OrderQueue* noundef bitcast (%struct.OrderQueueNode** @front to %struct.OrderQueue*)), !dbg !261
+  called function: isOrderQueueEmpty
+Tracing variable defined by instruction:   %cmp114 = icmp ne i32 %27, 11, !dbg !277
+Tracing variable defined by instruction:   %27 = load i32, i32* %choice, align 4, !dbg !276
+	Variable originates from an alloca:   %choice = alloca i32, align 4
+	Value has name: 1, value name: choice
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:732:5
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call51 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %choice), !dbg !177 --
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call8 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %choice), !dbg !102 --
+Tracing variable defined by instruction:   %cmp117 = icmp ne i32 %28, 5, !dbg !284
+Tracing variable defined by instruction:   %cmp119 = icmp ne %struct.OrderQueueNode* %31, null, !dbg !296
+Tracing variable defined by instruction:   %31 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** @front, align 8, !dbg !295
+	Variable originates from a global variable: @front = dso_local global %struct.OrderQueueNode* null, align 8, !dbg !40
+	Value has name: 1, value name: front
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:583:10
+	findDefUseChains()
+Tracing variable defined by instruction:   %34 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** %next, align 8, !dbg !302
+Tracing variable defined by instruction:   %next = getelementptr inbounds %struct.OrderQueueNode, %struct.OrderQueueNode* %33, i32 0, i32 1, !dbg !302
+Tracing variable defined by instruction:   %33 = load %struct.OrderQueueNode*, %struct.OrderQueueNode** @front, align 8, !dbg !301
+  called function: dequeueOrder
+  called function: displayOrderQueue
+  called function: enqueueOrder
+	Variable originates from a global variable: @rear = dso_local global %struct.OrderQueueNode* null, align 8, !dbg !42
+	Value has name: 1, value name: rear
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:751:9
+	findDefUseChains()
+  called function: enqueueOrder
+  called function: createOrderItemNode
+Tracing variable defined by instruction:   %call93 = call %struct.OrderItem* @createOrderItemNode(i8* noundef %arraydecay91, float noundef %18, i32 noundef %19, i8* noundef %arraydecay92), !dbg !237
+  called function: createOrderItemNode
+  called function: enqueueOrder
+  called function: createOrderItemNode
+Tracing variable defined by instruction:   %call26 = call %struct.OrderItem* @createOrderItemNode(i8* noundef %arraydecay24, float noundef %6, i32 noundef %7, i8* noundef %arraydecay25), !dbg !139
+  called function: createOrderItemNode
+  called function: displayOrderQueue
+  called function: enqueueOrder
+Tracing variable defined by instruction:   %cmp121 = icmp ne %struct.StackNode* %40, null, !dbg !313
+Tracing variable defined by instruction:   %40 = load %struct.StackNode*, %struct.StackNode** %top, align 8, !dbg !312
+	Variable originates from an alloca:   %top = alloca %struct.StackNode*, align 8
+	Value has name: 1, value name: top
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test5-cafeteria-system.c:711:21
+	findDefUseChains()
+Tracing variable defined by instruction:   %43 = load %struct.StackNode*, %struct.StackNode** %next124, align 8, !dbg !319
+Tracing variable defined by instruction:   %next124 = getelementptr inbounds %struct.StackNode, %struct.StackNode* %42, i32 0, i32 3, !dbg !319
+Tracing variable defined by instruction:   %42 = load %struct.StackNode*, %struct.StackNode** %top, align 8, !dbg !318
+  called function: push
+  called function: createOrderItemNode
+Tracing variable defined by instruction:   %call97 = call %struct.OrderItem* @createOrderItemNode(i8* noundef %arraydecay95, float noundef %20, i32 noundef %21, i8* noundef %arraydecay96), !dbg !244
+  called function: createOrderItemNode
+  called function: push
+  called function: createOrderItemNode
+Tracing variable defined by instruction:   %call30 = call %struct.OrderItem* @createOrderItemNode(i8* noundef %arraydecay28, float noundef %8, i32 noundef %9, i8* noundef %arraydecay29), !dbg !146
+  called function: createOrderItemNode
+6 warnings generated.

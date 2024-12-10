@@ -1,0 +1,47 @@
+test2.c:12:21: warning: incompatible integer to pointer conversion assigning to 'char *' from 'char'; take the address with & [-Wint-conversion]
+        str1[len++] = c;
+                    ^ ~
+                      &
+test2.c:15:20: warning: format specifies type 'char *' but the argument has type 'char **' [-Wformat]
+    printf("%s\n", str1);
+            ~~     ^~~~
+Tracing variable defined by instruction:   %cmp = icmp eq i32 %conv2, -1, !dbg !96
+Tracing variable defined by instruction:   %conv2 = sext i8 %1 to i32, !dbg !94
+Tracing variable defined by instruction:   %1 = load i8, i8* %c, align 1, !dbg !94
+	Variable originates from an alloca:   %c = alloca i8, align 1
+	Value has name: 1, value name: c
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test2.c:10:10
+	findDefUseChains()
+Tracing variable defined by instruction:   %conv = trunc i32 %call1 to i8, !dbg !92
+  called function: getc
+	  --- SEMINAL INPUT ---
+	   Value from a call to getc
+	  Argument passed to getc:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !90
+Tracing variable defined by instruction:   %call1 = call i32 @getc(%struct._IO_FILE* noundef %0), !dbg !92
+  called function: getc
+	  --- SEMINAL INPUT ---
+	   Value from a call to getc
+	  Argument passed to getc:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !90
+Tracing variable defined by instruction:   %0 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !90
+	Variable originates from an alloca:   %fp = alloca %struct._IO_FILE*, align 8
+	Value has name: 1, value name: fp
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test2.c:6:11
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.1, i64 0, i64 0)), !dbg !84
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp5 = icmp sge i32 %5, 1000, !dbg !105
+Tracing variable defined by instruction:   %5 = load i32, i32* %len, align 4, !dbg !103
+	Variable originates from an alloca:   %len = alloca i32, align 4
+	Value has name: 1, value name: len
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test2.c:8:9
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %4, 1, !dbg !100
+Tracing variable defined by instruction:   %4 = load i32, i32* %len, align 4, !dbg !100
+2 warnings generated.

@@ -1,0 +1,496 @@
+test4-library-management-system.c:129:60: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("\nBookid\tName\tAuthor\tStatus\tNo.\tTitles\n",info);
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+test4-library-management-system.c:171:17: warning: 'strcpy' will always overflow; destination buffer has size 3, but the source string has length 4 (including NUL byte) [-Wfortify-source]
+                strcpy(stats,"OUT");
+                ^
+Tracing variable defined by instruction:   %cmp = icmp ne i32 %1, 10, !dbg !153
+Tracing variable defined by instruction:   %1 = load i32, i32* %choice, align 4, !dbg !152
+	Variable originates from an alloca:   %choice = alloca i32, align 4
+	Value has name: 1, value name: choice
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:56:9
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call2 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.2, i64 0, i64 0), i32* noundef %choice), !dbg !126 --
+Tracing variable defined by instruction:   %cmp = icmp slt i32 %4, %5, !dbg !143
+Tracing variable defined by instruction:   %4 = load i32, i32* %i, align 4, !dbg !140
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:116:10
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %7, 1, !dbg !150
+Tracing variable defined by instruction:   %7 = load i32, i32* %i, align 4, !dbg !150
+Tracing variable defined by instruction:   %5 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !142
+Tracing variable defined by instruction:   %lnot = xor i1 %tobool, true, !dbg !129
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call4, 0, !dbg !129
+  called function: feof
+Tracing variable defined by instruction:   %call4 = call i32 @feof(%struct._IO_FILE* noundef %1) #6, !dbg !128
+  called function: feof
+Tracing variable defined by instruction:   %1 = load %struct._IO_FILE*, %struct._IO_FILE** @librecord, align 8, !dbg !127
+	Variable originates from a global variable: @librecord = dso_local global %struct._IO_FILE* null, align 8, !dbg !26
+	Value has name: 1, value name: librecord
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:105:15
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call17 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !179
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call17 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !173
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !131
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !124
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !124
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !129
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.5, i64 0, i64 0)), !dbg !118
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.5, i64 0, i64 0)), !dbg !121
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %lnot14 = xor i1 %tobool13, true, !dbg !146
+Tracing variable defined by instruction:   %tobool13 = icmp ne i32 %call12, 0, !dbg !146
+  called function: feof
+Tracing variable defined by instruction:   %call12 = call i32 @feof(%struct._IO_FILE* noundef %4) #6, !dbg !145
+  called function: feof
+Tracing variable defined by instruction:   %4 = load %struct._IO_FILE*, %struct._IO_FILE** @membrrecord, align 8, !dbg !144
+	Variable originates from a global variable: @membrrecord = dso_local global %struct._IO_FILE* null, align 8, !dbg !88
+	Value has name: 1, value name: membrrecord
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:136:17
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call2 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !136
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call2 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !130
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.5, i64 0, i64 0)), !dbg !120
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call6 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.5, i64 0, i64 0)), !dbg !135
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call, null, !dbg !132
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call4, 0, !dbg !141
+  called function: feof
+Tracing variable defined by instruction:   %call4 = call i32 @feof(%struct._IO_FILE* noundef %0) #6, !dbg !141
+  called function: feof
+Tracing variable defined by instruction:   %2 = phi i1 [ false, %while.cond ], [ %cmp5, %land.rhs ], !dbg !145
+Tracing variable defined by instruction:   %cmp5 = icmp eq i32 %1, 0, !dbg !144
+Tracing variable defined by instruction:   %1 = load i32, i32* %Found, align 4, !dbg !143
+	Variable originates from an alloca:   %Found = alloca i32, align 4
+	Value has name: 1, value name: Found
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:151:9
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp9 = icmp eq i32 %call8, 0, !dbg !152
+  called function: strcmp
+Tracing variable defined by instruction:   %call8 = call i32 @strcmp(i8* noundef %arraydecay7, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !151
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay7 = getelementptr inbounds [25 x i8], [25 x i8]* %Target, i64 0, i64 0, !dbg !149
+	Variable originates from an alloca:   %Target = alloca [25 x i8], align 16
+	Value has name: 1, value name: Target
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:157:24
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp11 = icmp slt i32 %4, %5, !dbg !162
+Tracing variable defined by instruction:   %4 = load i32, i32* %i, align 4, !dbg !159
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:163:18
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %7, 1, !dbg !166
+Tracing variable defined by instruction:   %7 = load i32, i32* %i, align 4, !dbg !166
+Tracing variable defined by instruction:   %5 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !161
+Tracing variable defined by instruction:   %tobool13 = icmp ne i32 %8, 0, !dbg !173
+Tracing variable defined by instruction:   %cmp15 = icmp eq i32 %9, 1, !dbg !179
+Tracing variable defined by instruction:   %9 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 5), align 4, !dbg !176
+Tracing variable defined by instruction:   %tobool26 = icmp ne i32 %11, 0, !dbg !189
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call, null, !dbg !127
+Tracing variable defined by instruction:   %lnot = xor i1 %tobool, true, !dbg !138
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call5, 0, !dbg !138
+  called function: feof
+Tracing variable defined by instruction:   %call5 = call i32 @feof(%struct._IO_FILE* noundef %0) #6, !dbg !137
+  called function: feof
+Tracing variable defined by instruction:   %cmp9 = icmp eq i32 %call8, 0, !dbg !145
+  called function: strcmp
+Tracing variable defined by instruction:   %call8 = call i32 @strcmp(i8* noundef %arraydecay7, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 2, i64 0)) #7, !dbg !144
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay7 = getelementptr inbounds [500 x i8], [500 x i8]* %Target, i64 0, i64 0, !dbg !142
+	Variable originates from an alloca:   %Target = alloca [500 x i8], align 16
+	Value has name: 1, value name: Target
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:192:24
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp12 = icmp slt i32 %2, %3, !dbg !157
+Tracing variable defined by instruction:   %2 = load i32, i32* %i, align 4, !dbg !154
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:202:18
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %5, 1, !dbg !161
+Tracing variable defined by instruction:   %5 = load i32, i32* %i, align 4, !dbg !161
+Tracing variable defined by instruction:   %3 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !156
+Tracing variable defined by instruction:   %tobool14 = icmp ne i32 %6, 0, !dbg !168
+Tracing variable defined by instruction:   %6 = load i32, i32* %Found, align 4, !dbg !168
+	Variable originates from an alloca:   %Found = alloca i32, align 4
+	Value has name: 1, value name: Found
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:186:9
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call, null, !dbg !127
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call4, 0, !dbg !136
+  called function: feof
+Tracing variable defined by instruction:   %call4 = call i32 @feof(%struct._IO_FILE* noundef %0) #6, !dbg !136
+  called function: feof
+Tracing variable defined by instruction:   %2 = phi i1 [ false, %while.cond ], [ %cmp5, %land.rhs ], !dbg !140
+Tracing variable defined by instruction:   %cmp5 = icmp eq i32 %1, 0, !dbg !139
+Tracing variable defined by instruction:   %1 = load i32, i32* %Found, align 4, !dbg !138
+	Variable originates from an alloca:   %Found = alloca i32, align 4
+	Value has name: 1, value name: Found
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:215:9
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp9 = icmp eq i32 %call8, 0, !dbg !147
+  called function: strcmp
+Tracing variable defined by instruction:   %call8 = call i32 @strcmp(i8* noundef %arraydecay7, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !146
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay7 = getelementptr inbounds [500 x i8], [500 x i8]* %Target, i64 0, i64 0, !dbg !144
+	Variable originates from an alloca:   %Target = alloca [500 x i8], align 16
+	Value has name: 1, value name: Target
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:221:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp11 = icmp slt i32 %4, %5, !dbg !158
+Tracing variable defined by instruction:   %4 = load i32, i32* %i, align 4, !dbg !155
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:230:18
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc22 = add nsw i32 %13, 1, !dbg !189
+Tracing variable defined by instruction:   %13 = load i32, i32* %i, align 4, !dbg !189
+Tracing variable defined by instruction:   %inc = add nsw i32 %7, 1, !dbg !162
+Tracing variable defined by instruction:   %7 = load i32, i32* %i, align 4, !dbg !162
+Tracing variable defined by instruction:   %5 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !157
+Tracing variable defined by instruction:   %tobool13 = icmp ne i32 %8, 0, !dbg !169
+Tracing variable defined by instruction:   %cmp17 = icmp slt i32 %9, %10, !dbg !180
+Tracing variable defined by instruction:   %10 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !179
+Tracing variable defined by instruction:   %tobool25 = icmp ne i32 %14, 0, !dbg !194
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call, null, !dbg !134
+Tracing variable defined by instruction:   %lnot = xor i1 %tobool, true, !dbg !141
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call2, 0, !dbg !141
+  called function: feof
+Tracing variable defined by instruction:   %call2 = call i32 @feof(%struct._IO_FILE* noundef %0) #6, !dbg !140
+  called function: feof
+Tracing variable defined by instruction:   %cmp4 = icmp eq i32 %2, 1, !dbg !147
+Tracing variable defined by instruction:   %2 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 5), align 4, !dbg !145
+Tracing variable defined by instruction:   %cmp8 = icmp slt i32 %5, %6, !dbg !160
+Tracing variable defined by instruction:   %5 = load i32, i32* %i, align 4, !dbg !157
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:269:18
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc10 = add nsw i32 %8, 1, !dbg !164
+Tracing variable defined by instruction:   %8 = load i32, i32* %i, align 4, !dbg !164
+Tracing variable defined by instruction:   %6 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !159
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call2, null, !dbg !133
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call4, 0, !dbg !139
+  called function: feof
+Tracing variable defined by instruction:   %call4 = call i32 @feof(%struct._IO_FILE* noundef %0) #6, !dbg !139
+  called function: feof
+Tracing variable defined by instruction:   %2 = phi i1 [ false, %while.cond ], [ %cmp5, %land.rhs ], !dbg !143
+Tracing variable defined by instruction:   %cmp5 = icmp eq i32 %1, 0, !dbg !142
+Tracing variable defined by instruction:   %1 = load i32, i32* %Found1, align 4, !dbg !141
+	Variable originates from an alloca:   %Found1 = alloca i32, align 4
+	Value has name: 1, value name: Found1
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:300:15
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp7 = icmp eq i32 %4, %5, !dbg !150
+Tracing variable defined by instruction:   %4 = load i32, i32* %mid, align 4, !dbg !147
+	Variable originates from an alloca:   %mid = alloca i32, align 4
+	Value has name: 1, value name: mid
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:303:9
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call1 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %mid), !dbg !129 --
+Tracing variable defined by instruction:   %5 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 0), align 4, !dbg !149
+Tracing variable defined by instruction:   %tobool9 = icmp ne i32 %6, 0, !dbg !158
+Tracing variable defined by instruction:   %cmp11 = icmp slt i32 %7, 1, !dbg !164
+Tracing variable defined by instruction:   %7 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 3), align 4, !dbg !161
+Tracing variable defined by instruction:   %cmp18 = icmp eq %struct._IO_FILE* %call17, null, !dbg !176
+Tracing variable defined by instruction:   %tobool24 = icmp ne i32 %call23, 0, !dbg !182
+  called function: feof
+Tracing variable defined by instruction:   %call23 = call i32 @feof(%struct._IO_FILE* noundef %8) #6, !dbg !182
+  called function: feof
+Tracing variable defined by instruction:   %10 = phi i1 [ false, %while.cond22 ], [ %cmp26, %land.rhs25 ], !dbg !186
+Tracing variable defined by instruction:   %cmp26 = icmp eq i32 %9, 0, !dbg !185
+Tracing variable defined by instruction:   %9 = load i32, i32* %Found2, align 4, !dbg !184
+	Variable originates from an alloca:   %Found2 = alloca i32, align 4
+	Value has name: 1, value name: Found2
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:300:24
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp32 = icmp eq i32 %call31, 0, !dbg !193
+  called function: strcmp
+Tracing variable defined by instruction:   %call31 = call i32 @strcmp(i8* noundef %arraydecay30, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !192
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay30 = getelementptr inbounds [20 x i8], [20 x i8]* %issubookname, i64 0, i64 0, !dbg !190
+	Variable originates from an alloca:   %issubookname = alloca [20 x i8], align 16
+	Value has name: 1, value name: issubookname
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:324:28
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp35 = icmp slt i32 %12, %13, !dbg !203
+Tracing variable defined by instruction:   %12 = load i32, i32* %i, align 4, !dbg !200
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:334:30
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc99 = add nsw i32 %48, 1, !dbg !323
+Tracing variable defined by instruction:   %48 = load i32, i32* %i, align 4, !dbg !323
+Tracing variable defined by instruction:   %inc = add nsw i32 %15, 1, !dbg !207
+Tracing variable defined by instruction:   %15 = load i32, i32* %i, align 4, !dbg !207
+Tracing variable defined by instruction:   %13 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !202
+Tracing variable defined by instruction:   %tobool38 = icmp ne i32 %16, 0, !dbg !213
+Tracing variable defined by instruction:   %cmp40 = icmp eq i32 %17, 0, !dbg !219
+Tracing variable defined by instruction:   %17 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 5), align 4, !dbg !216
+Tracing variable defined by instruction:   %cmp46 = icmp eq %struct._IO_FILE* %call45, null, !dbg !230
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call45 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !227
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %lnot = xor i1 %tobool52, true, !dbg !237
+Tracing variable defined by instruction:   %tobool52 = icmp ne i32 %call51, 0, !dbg !237
+  called function: feof
+Tracing variable defined by instruction:   %call51 = call i32 @feof(%struct._IO_FILE* noundef %18) #6, !dbg !236
+  called function: feof
+Tracing variable defined by instruction:   %18 = load %struct._IO_FILE*, %struct._IO_FILE** @temp2, align 8, !dbg !235
+	Variable originates from a global variable: @temp2 = dso_local global %struct._IO_FILE* null, align 8, !dbg !96
+	Value has name: 1, value name: temp2
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:347:38
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %call45 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0), i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.5, i64 0, i64 0)), !dbg !233
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.18, i64 0, i64 0)
+Tracing variable defined by instruction:   %cmp55 = icmp eq i32 %20, %21, !dbg !244
+Tracing variable defined by instruction:   %21 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 0), align 4, !dbg !243
+Tracing variable defined by instruction:   %tobool62 = icmp ne i32 %call61, 0, !dbg !262
+  called function: feof
+Tracing variable defined by instruction:   %call61 = call i32 @feof(%struct._IO_FILE* noundef %31) #6, !dbg !262
+  called function: feof
+Tracing variable defined by instruction:   %cmp71 = icmp eq %struct._IO_FILE* %call70, null, !dbg !276
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call70 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !273
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %lnot78 = xor i1 %tobool77, true, !dbg !283
+Tracing variable defined by instruction:   %tobool77 = icmp ne i32 %call76, 0, !dbg !283
+  called function: feof
+Tracing variable defined by instruction:   %call76 = call i32 @feof(%struct._IO_FILE* noundef %34) #6, !dbg !282
+  called function: feof
+Tracing variable defined by instruction:   %34 = load %struct._IO_FILE*, %struct._IO_FILE** @temp1, align 8, !dbg !281
+	Variable originates from a global variable: @temp1 = dso_local global %struct._IO_FILE* null, align 8, !dbg !94
+	Value has name: 1, value name: temp1
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:372:38
+	findDefUseChains()
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %call71 = call noalias %struct._IO_FILE* @fopen(i8* noundef getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0), i8* noundef getelementptr inbounds ([2 x i8], [2 x i8]* @.str.20, i64 0, i64 0)), !dbg !279
+  called function: fopen
+	  --- SEMINAL INPUT ---
+	   Value from a call to fopen
+	  Argument passed to fopen: i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.4, i64 0, i64 0)
+Tracing variable defined by instruction:   %tobool82 = icmp ne i32 %call81, 0, !dbg !289
+  called function: feof
+Tracing variable defined by instruction:   %call81 = call i32 @feof(%struct._IO_FILE* noundef %36) #6, !dbg !289
+  called function: feof
+Tracing variable defined by instruction:   %cmp87 = icmp ne i32 %call86, 0, !dbg !295
+  called function: strcmp
+Tracing variable defined by instruction:   %call86 = call i32 @strcmp(i8* noundef %arraydecay85, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !294
+  called function: strcmp
+Tracing variable defined by instruction:   %cmp94 = icmp slt i32 %44, %45, !dbg !315
+Tracing variable defined by instruction:   %45 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !314
+Tracing variable defined by instruction:   %tobool114 = icmp ne i32 %53, 0, !dbg !343
+Tracing variable defined by instruction:   %tobool122 = icmp ne i32 %54, 0, !dbg !348
+Tracing variable defined by instruction:   %cmp = icmp eq %struct._IO_FILE* %call2, null, !dbg !139
+Tracing variable defined by instruction:   %tobool = icmp ne i32 %call4, 0, !dbg !145
+  called function: feof
+Tracing variable defined by instruction:   %call4 = call i32 @feof(%struct._IO_FILE* noundef %2) #6, !dbg !145
+  called function: feof
+Tracing variable defined by instruction:   %4 = phi i1 [ false, %while.cond ], [ %cmp5, %land.rhs ], !dbg !149
+Tracing variable defined by instruction:   %cmp5 = icmp eq i32 %3, 0, !dbg !148
+Tracing variable defined by instruction:   %3 = load i32, i32* %Found1, align 4, !dbg !147
+	Variable originates from an alloca:   %Found1 = alloca i32, align 4
+	Value has name: 1, value name: Found1
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:422:11
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp7 = icmp eq i32 %6, %7, !dbg !156
+Tracing variable defined by instruction:   %6 = load i32, i32* %mid, align 4, !dbg !153
+	Variable originates from an alloca:   %mid = alloca i32, align 4
+	Value has name: 1, value name: mid
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:425:9
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call1 = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([3 x i8], [3 x i8]* @.str.7, i64 0, i64 0), i32* noundef %mid), !dbg !135 --
+Tracing variable defined by instruction:   %7 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 0), align 4, !dbg !155
+Tracing variable defined by instruction:   %tobool9 = icmp ne i32 %8, 0, !dbg !164
+Tracing variable defined by instruction:   %cmp11 = icmp sge i32 %9, 5, !dbg !170
+Tracing variable defined by instruction:   %9 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 3), align 4, !dbg !167
+Tracing variable defined by instruction:   %cmp18 = icmp eq %struct._IO_FILE* %call17, null, !dbg !182
+Tracing variable defined by instruction:   %tobool24 = icmp ne i32 %call23, 0, !dbg !188
+  called function: feof
+Tracing variable defined by instruction:   %call23 = call i32 @feof(%struct._IO_FILE* noundef %10) #6, !dbg !188
+  called function: feof
+Tracing variable defined by instruction:   %12 = phi i1 [ false, %while.cond22 ], [ %cmp26, %land.rhs25 ], !dbg !192
+Tracing variable defined by instruction:   %cmp26 = icmp eq i32 %11, 0, !dbg !191
+Tracing variable defined by instruction:   %11 = load i32, i32* %Found2, align 4, !dbg !190
+	Variable originates from an alloca:   %Found2 = alloca i32, align 4
+	Value has name: 1, value name: Found2
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:422:20
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp32 = icmp eq i32 %call31, 0, !dbg !199
+  called function: strcmp
+Tracing variable defined by instruction:   %call31 = call i32 @strcmp(i8* noundef %arraydecay30, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !198
+  called function: strcmp
+Tracing variable defined by instruction:   %arraydecay30 = getelementptr inbounds [20 x i8], [20 x i8]* %retbookname, i64 0, i64 0, !dbg !196
+	Variable originates from an alloca:   %retbookname = alloca [20 x i8], align 16
+	Value has name: 1, value name: retbookname
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:446:28
+	findDefUseChains()
+Tracing variable defined by instruction:   %cmp35 = icmp slt i32 %14, %15, !dbg !209
+Tracing variable defined by instruction:   %14 = load i32, i32* %i, align 4, !dbg !206
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test4-library-management-system.c:456:30
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc100 = add nsw i32 %50, 1, !dbg !329
+Tracing variable defined by instruction:   %50 = load i32, i32* %i, align 4, !dbg !329
+Tracing variable defined by instruction:   %inc = add nsw i32 %17, 1, !dbg !213
+Tracing variable defined by instruction:   %17 = load i32, i32* %i, align 4, !dbg !213
+Tracing variable defined by instruction:   %15 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !208
+Tracing variable defined by instruction:   %tobool38 = icmp ne i32 %18, 0, !dbg !219
+Tracing variable defined by instruction:   %cmp40 = icmp eq i32 %19, 1, !dbg !225
+Tracing variable defined by instruction:   %19 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 5), align 4, !dbg !222
+Tracing variable defined by instruction:   %cmp46 = icmp eq %struct._IO_FILE* %call45, null, !dbg !236
+Tracing variable defined by instruction:   %lnot = xor i1 %tobool52, true, !dbg !243
+Tracing variable defined by instruction:   %tobool52 = icmp ne i32 %call51, 0, !dbg !243
+  called function: feof
+Tracing variable defined by instruction:   %call51 = call i32 @feof(%struct._IO_FILE* noundef %20) #6, !dbg !242
+  called function: feof
+Tracing variable defined by instruction:   %cmp55 = icmp eq i32 %22, %23, !dbg !250
+Tracing variable defined by instruction:   %23 = load i32, i32* getelementptr inbounds (%struct.anon.0, %struct.anon.0* @membr, i32 0, i32 0), align 4, !dbg !249
+Tracing variable defined by instruction:   %tobool63 = icmp ne i32 %call62, 0, !dbg !268
+  called function: feof
+Tracing variable defined by instruction:   %call62 = call i32 @feof(%struct._IO_FILE* noundef %33) #6, !dbg !268
+  called function: feof
+Tracing variable defined by instruction:   %cmp72 = icmp eq %struct._IO_FILE* %call71, null, !dbg !282
+Tracing variable defined by instruction:   %lnot79 = xor i1 %tobool78, true, !dbg !289
+Tracing variable defined by instruction:   %tobool78 = icmp ne i32 %call77, 0, !dbg !289
+  called function: feof
+Tracing variable defined by instruction:   %call77 = call i32 @feof(%struct._IO_FILE* noundef %36) #6, !dbg !288
+  called function: feof
+Tracing variable defined by instruction:   %tobool83 = icmp ne i32 %call82, 0, !dbg !295
+  called function: feof
+Tracing variable defined by instruction:   %call82 = call i32 @feof(%struct._IO_FILE* noundef %38) #6, !dbg !295
+  called function: feof
+Tracing variable defined by instruction:   %cmp88 = icmp ne i32 %call87, 0, !dbg !301
+  called function: strcmp
+Tracing variable defined by instruction:   %call87 = call i32 @strcmp(i8* noundef %arraydecay86, i8* noundef getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 1, i64 0)) #7, !dbg !300
+  called function: strcmp
+Tracing variable defined by instruction:   %cmp95 = icmp slt i32 %46, %47, !dbg !321
+Tracing variable defined by instruction:   %47 = load i32, i32* getelementptr inbounds (%struct.anon, %struct.anon* @book, i32 0, i32 3), align 4, !dbg !320
+Tracing variable defined by instruction:   %tobool115 = icmp ne i32 %55, 0, !dbg !349
+Tracing variable defined by instruction:   %tobool123 = icmp ne i32 %56, 0, !dbg !354
+2 warnings generated.

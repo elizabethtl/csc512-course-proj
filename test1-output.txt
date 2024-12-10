@@ -1,0 +1,23 @@
+Tracing variable defined by instruction:   %cmp = icmp slt i32 %0, %1, !dbg !29
+Tracing variable defined by instruction:   %0 = load i32, i32* %i, align 4, !dbg !26
+	Variable originates from an alloca:   %i = alloca i32, align 4
+	Value has name: 1, value name: i
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test1.c:8:13
+	findDefUseChains()
+Tracing variable defined by instruction:   %inc = add nsw i32 %3, 1, !dbg !34
+Tracing variable defined by instruction:   %3 = load i32, i32* %i, align 4, !dbg !34
+Tracing variable defined by instruction:   %1 = load i32, i32* %n, align 4, !dbg !28
+	Variable originates from an alloca:   %n = alloca i32, align 4
+	Value has name: 1, value name: n
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test1.c:6:4
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([7 x i8], [7 x i8]* @.str, i64 0, i64 0), i32* noundef %id, i32* noundef %n), !dbg !19 --
+	Variable originates from an alloca:   %id = alloca i32, align 4
+	Value has name: 1, value name: id
+	Location: /home/elizabeth/Documents/csc512/project/csc512-course-proj/test1.c:6:4
+	findDefUseChains()
+  called function: __isoc99_scanf
+	  --- SEMINAL INPUT ---
+	   Value originates from scanf:   %call = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([7 x i8], [7 x i8]* @.str, i64 0, i64 0), i32* noundef %id, i32* noundef %n), !dbg !19 --
