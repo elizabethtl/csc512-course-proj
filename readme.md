@@ -31,7 +31,7 @@ Tracing variable defined by instruction:   %1 = load i32, i32* %n, align 4, !dbg
 	   Value originates from scanf:   %call = call i32 (i8*, ...) @__isoc99_scanf(i8* noundef getelementptr inbounds ([7 x i8], [7 x i8]* @.str, i64 0, i64 0), i32* noundef %id, i32* noundef %n), !dbg !19 --
 ```
 
-It includes the variable name and Location  
+It includes the variable name (value name: n) and Location (file and line number) 
 If it finds that the variable is from a seminal input, it will print `--- SEMINAL INPUT ---` and additional information on where the input value is from
 
 ---
