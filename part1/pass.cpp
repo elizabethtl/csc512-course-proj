@@ -90,7 +90,27 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
                     Value *arg = callInst->getArgOperand(0);    // Get the first argument
                     errs() << "\t  Argument passed to fopen: " << *arg << "\n";
                 }
-                
+                if (calledFunc->getName().contains("fwrite")) {
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value from a call to fwrite\n";
+
+                    Value *arg = callInst->getArgOperand(0);    // Get the first argument
+                    errs() << "\t  Argument passed to fwrite: " << *arg << "\n";
+                }
+                if (calledFunc->getName().contains("fclose")) {
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value from a call to fclose\n";
+
+                    Value *arg = callInst->getArgOperand(0);    // Get the first argument
+                    errs() << "\t  Argument passed to fclose: " << *arg << "\n";
+                }
+                if (calledFunc->getName().contains("fread")) {
+                    errs() << "\t  --- SEMINAL INPUT ---\n";
+                    errs() << "\t   Value from a call to fread\n";
+
+                    Value *arg = callInst->getArgOperand(0);    // Get the first argument
+                    errs() << "\t  Argument passed to fread: " << *arg << "\n";
+                }
 
             }
         } 
