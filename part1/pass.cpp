@@ -58,7 +58,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
     // Helper function to find the variable name associated with an instruction
     void printValueName(Value *V) {
-        errs() << "\thas name: " << V->hasName() << ", value name: " << V->getName() << "\n";
+        errs() << "\tValue has name: " << V->hasName() << ", value name: " << V->getName() << "\n";
     }
 
     std::vector<Instruction*> checked_seminal_inputs;
@@ -69,7 +69,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
 
         if (auto *callInst = dyn_cast<CallInst>(V)) {
             if (Function *calledFunc = callInst->getCalledFunction()) {
-                errs() << "\t  called function: " << calledFunc->getName() << "\n";
+                errs() << "  called function: " << calledFunc->getName() << "\n";
                 if (calledFunc->getName().contains("scanf")) {
                     errs() << "\t  --- SEMINAL INPUT ---\n";
                     errs() << "\t   Value originates from scanf: " << *callInst << " --\n";
@@ -96,8 +96,8 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
         } 
     }
 
-    void printDefUseChains(llvm::Value *Val) {
-        errs() << "\tprintDefUseChains()\n";
+    void findDefUseChains(llvm::Value *Val) {
+        errs() << "\tfindDefUseChains()\n";
         for (auto *User : Val->users()) {
             // errs() << "\t   DefUseChain value is used in: " << *User << "\n";
 
@@ -147,7 +147,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             errs() << "\tVariable originates as a function argument: " << *V << "\n";
             printValueName(V);
             printValueSourceLocation(V);
-            printDefUseChains(V);
+            findDefUseChains(V);
             return;
         }
 
@@ -156,7 +156,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             errs() << "\tVariable originates from an alloca: " << *AI << "\n";
             printValueName(V);
             printValueSourceLocation(V);
-            printDefUseChains(V);
+            findDefUseChains(V);
             return;
         }
 
@@ -165,7 +165,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             errs() << "\tVariable originates from a global variable: " << *GV << "\n";
             printValueName(V);
             printValueSourceLocation(V);
-            printDefUseChains(V);
+            findDefUseChains(V);
             return;
         }
 
@@ -174,7 +174,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             errs() << "\tVariable defined by store instruction: " << *SI << "\n";
             printValueName(V);
             printValueSourceLocation(V);
-            printDefUseChains(V);
+            findDefUseChains(V);
             return;
         }
 
@@ -183,7 +183,7 @@ struct SkeletonPass : public PassInfoMixin<SkeletonPass> {
             if (isInstructionInVector(traced_instructions, Inst)) {
                 return;
             }
-            errs() << "\tTracing variable defined by instruction: " << *Inst << "\n";
+            errs() << "Tracing variable defined by instruction: " << *Inst << "\n";
             checkBeforeTrace(Inst);
         }
     }
